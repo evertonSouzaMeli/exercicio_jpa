@@ -5,8 +5,11 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="oracle" />
+        </datasource-mapping>
         <naming-strategy-map />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
     </facet>
     <facet type="kotlin-language" name="Kotlin">
@@ -19,8 +22,16 @@
             <stringArg name="languageVersion" arg="1.6" />
           </stringArguments>
           <arrayArguments>
-            <arrayArg name="pluginClasspaths" />
-            <arrayArg name="pluginOptions" />
+            <arrayArg name="pluginClasspaths">
+              <args>$KOTLIN_BUNDLED$/lib/noarg-compiler-plugin.jar</args>
+            </arrayArg>
+            <arrayArg name="pluginOptions">
+              <args>
+                <arg>plugin:org.jetbrains.kotlin.noarg:annotation=javax.persistence.Entity</arg>
+                <arg>plugin:org.jetbrains.kotlin.noarg:annotation=javax.persistence.Embeddable</arg>
+                <arg>plugin:org.jetbrains.kotlin.noarg:annotation=javax.persistence.MappedSuperclass</arg>
+              </args>
+            </arrayArg>
           </arrayArguments>
         </compilerArguments>
       </configuration>
@@ -70,5 +81,6 @@
     <orderEntry type="library" name="Maven: org.jvnet.staxex:stax-ex:1.8" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.15" level="project" />
     <orderEntry type="library" name="Maven: com.oracle.database.jdbc:ojdbc8:21.1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.22" level="project" />
   </component>
 </module>
