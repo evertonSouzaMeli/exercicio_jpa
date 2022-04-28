@@ -2,6 +2,7 @@ package br.com.fiap.dao
 
 
 interface GenericDAO<T,K> {
+    fun procurarTodos() : MutableList<Any?>?
 
     fun cadastrar(entity: T)
 

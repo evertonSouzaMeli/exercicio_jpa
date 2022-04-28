@@ -12,17 +12,23 @@ class Caso(nome: String, descricao: String){
     var codigo : Int? = null
 
     @Column(name = "NOM_CASO_TESTE", nullable = false)
-    lateinit var nome : String
+    var nome : String? = null
 
     @Column(name = "DES_CASO_TESTE", nullable = false)
-    lateinit var descricao: String
+    var descricao: String? = null
 
     @ManyToOne
-    lateinit var sistema: Sistema
+    var sistema: Sistema? = null
 
     constructor(nome: String, descricao: String, sistema: Sistema): this(nome, descricao){
         this.nome = nome
         this.descricao = descricao
         this.sistema = sistema
     }
+
+    override fun toString(): String {
+        return "Caso(codigo=$codigo, nome='$nome', descricao='$descricao', sistema=$sistema)"
+    }
+
+
 }

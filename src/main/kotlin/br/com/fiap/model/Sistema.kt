@@ -11,7 +11,7 @@ class Sistema( nome: String) {
     var codigo : Int? = null
 
     @Column(name = "NOM_SISTEMA", nullable = false)
-    lateinit var nome : String
+    var nome : String? = null
 
     @OneToMany(mappedBy = "sistema", cascade = [CascadeType.PERSIST, CascadeType.MERGE])
     var casoList: List<Caso> = ArrayList()
@@ -20,4 +20,10 @@ class Sistema( nome: String) {
         this.nome = nome
         this.casoList = casoList
     }
+
+    override fun toString(): String {
+        return "Sistema(codigo=$codigo, nome='$nome')"
+    }
+
+
 }

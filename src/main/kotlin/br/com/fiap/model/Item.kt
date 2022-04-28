@@ -12,10 +12,10 @@ class Item( descricao: String ) {
     var codigo : Int? = null
 
     @Column(name = "DES_ITEM_TESTE", nullable = false)
-    lateinit var descricao: String
+    var descricao: String? = null
 
     @ManyToOne
-    lateinit var caso : Caso
+    var caso : Caso? = null
 
     @ManyToMany(cascade = [CascadeType.MERGE])
     @JoinTable(name = "TAB_ITEM_TESTE_USUARIO")
@@ -25,5 +25,9 @@ class Item( descricao: String ) {
         this.descricao = descricao
         this.caso = caso
         this.usuarioList = usuarioList
+    }
+
+    override fun toString(): String {
+        return "Item(codigo=$codigo, descricao='$descricao', caso=$caso, usuarioList=$usuarioList)"
     }
 }

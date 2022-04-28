@@ -32,6 +32,11 @@
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <version>1.6.10</version>
+                <configuration>
+                    <compilerPlugins>
+                        <plugin>jpa</plugin>
+                    </compilerPlugins>
+                </configuration>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -48,6 +53,12 @@
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-noarg</artifactId>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -64,22 +75,6 @@
                 <configuration>
                     <mainClass>MainKt</mainClass>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <configuration>
-                    <compilerPlugins>
-                        <plugin>jpa</plugin>
-                    </compilerPlugins>
-                </configuration>
-
-                <dependencies>
-                    <dependency>
-                        <groupId>org.jetbrains.kotlin</groupId>
-                        <artifactId>kotlin-maven-noarg</artifactId>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -112,5 +107,11 @@
                 <artifactId>ojdbc8</artifactId>
                 <version>21.1.0.0</version>
             </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.212</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 </project>

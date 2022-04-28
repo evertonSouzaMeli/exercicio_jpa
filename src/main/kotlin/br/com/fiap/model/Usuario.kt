@@ -12,7 +12,7 @@ class Usuario( nome: String ) {
     var codigo : Int? = null
 
     @Column(name = "NOM_USUARIO", nullable = false)
-    lateinit var nome: String
+    var nome: String? = null
 
     @ManyToMany(mappedBy = "usuarioList", cascade = [CascadeType.MERGE])
     var itemList : List<Item> = ArrayList()
@@ -21,4 +21,10 @@ class Usuario( nome: String ) {
         this.nome = nome
         this.itemList = itemList
     }
+
+    override fun toString(): String {
+        return "Usuario(codigo=$codigo, nome='$nome')"
+    }
+
+
 }

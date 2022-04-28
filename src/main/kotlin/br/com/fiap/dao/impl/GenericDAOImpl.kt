@@ -25,6 +25,10 @@ open class GenericDAOImpl<T, K>(private val em: EntityManager?) : GenericDAO<T, 
         em?.remove(procurar(id))
     }
 
+    override fun procurarTodos(): MutableList<Any?>? {
+        return em?.createQuery("Select t from " + clazz.simpleName + " t")?.resultList;
+    }
+
     override fun commit() {
         try {
             em?.transaction?.begin()
