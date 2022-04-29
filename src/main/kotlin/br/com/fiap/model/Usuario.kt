@@ -9,14 +9,13 @@ class Usuario() {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario")
     @Column(name = "COD_USUARIO")
-    var codigo : Int? = null
+    lateinit var codigo : Integer
 
     @Column(name = "NOM_USUARIO", nullable = false)
-    var nome: String? = null
+    lateinit var nome: String
 
     @ManyToMany(mappedBy = "usuarioList", cascade = [CascadeType.ALL])
-    @JoinColumn(name = "", referencedColumnName = "codigo")
-    var itemList : List<Item> = ArrayList()
+    lateinit var itemList: List<Item>
 
     constructor(nome: String, itemList: List<Item>?): this(){
         this.nome = nome

@@ -9,7 +9,7 @@ class Item() {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item")
     @Column(name = "COD_ITEM_TESTE")
-    var codigo: Int = 0
+    lateinit var codigo: Integer
 
     @Column(name = "DES_ITEM_TESTE")
     lateinit var descricao: String

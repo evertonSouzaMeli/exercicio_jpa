@@ -9,17 +9,16 @@ class Caso(){
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "caso")
     @Column(name = "COD_CASO_TESTE")
-    var codigo : Int? = null
+    lateinit var codigo : Integer
 
     @Column(name = "NOM_CASO_TESTE", nullable = false)
-    var nome : String? = null
+    lateinit var nome : String
 
     @Column(name = "DES_CASO_TESTE", nullable = false)
-    var descricao: String? = null
+    lateinit var descricao: String
 
-    @ManyToOne
-    @JoinColumn(name = "", referencedColumnName = "codigo")
-    var sistema: Sistema? = null
+    @ManyToOne(cascade = [CascadeType.PERSIST, CascadeType.MERGE])
+    lateinit var sistema: Sistema
 
     constructor(nome: String, descricao: String, sistema: Sistema): this(){
         this.nome = nome

@@ -19,8 +19,6 @@ fun main() {
     val casoDAOImpl = CasoDAOImpl(entityManager)
 
 
-    var caso: Caso = Caso("Cadastro usuario", "Cadastrar usuario com sucesso", Sistema("Minduim", arrayListOf()))
-
-
-
+    var caso: Caso = Caso("Cadastro usuario", "Cadastrar usuario com sucesso", Sistema("Minduim", null))
+    casoDAOImpl.cadastrar(caso)
 }
