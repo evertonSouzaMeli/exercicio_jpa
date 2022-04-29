@@ -5,7 +5,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "TAB_CASO_TESTE")
 @SequenceGenerator(name="caso", sequenceName = "SQ_TB_CASO", allocationSize = 1)
-class Caso(nome: String, descricao: String){
+class Caso(){
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "caso")
     @Column(name = "COD_CASO_TESTE")
@@ -20,7 +20,7 @@ class Caso(nome: String, descricao: String){
     @ManyToOne
     var sistema: Sistema? = null
 
-    constructor(nome: String, descricao: String, sistema: Sistema): this(nome, descricao){
+    constructor(nome: String, descricao: String, sistema: Sistema): this(){
         this.nome = nome
         this.descricao = descricao
         this.sistema = sistema

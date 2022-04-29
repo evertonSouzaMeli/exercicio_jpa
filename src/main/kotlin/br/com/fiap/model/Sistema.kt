@@ -5,7 +5,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "TAB_SISTEMA")
 @SequenceGenerator(name="sistema", sequenceName = "SQ_TB_SISTEMA", allocationSize = 1)
-class Sistema( nome: String) {
+class Sistema() {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sistema")
     var codigo : Int? = null
@@ -16,7 +16,7 @@ class Sistema( nome: String) {
     @OneToMany(mappedBy = "sistema", cascade = [CascadeType.PERSIST, CascadeType.MERGE])
     var casoList: List<Caso> = ArrayList()
 
-    constructor(nome: String, casoList: List<Caso>) : this(nome){
+    constructor(nome: String, casoList: List<Caso>) : this(){
         this.nome = nome
         this.casoList = casoList
     }

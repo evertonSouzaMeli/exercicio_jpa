@@ -5,7 +5,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "TAB_USUARIO")
 @SequenceGenerator(name="usuario", sequenceName = "SQ_TB_USUARIO", allocationSize = 1)
-class Usuario( nome: String ) {
+class Usuario() {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario")
     @Column(name = "COD_USUARIO")
@@ -14,10 +14,11 @@ class Usuario( nome: String ) {
     @Column(name = "NOM_USUARIO", nullable = false)
     var nome: String? = null
 
-    @ManyToMany(mappedBy = "usuarioList", cascade = [CascadeType.MERGE])
+    @ManyToMany(mappedBy = "usuarioList", cascade = [CascadeType.ALL])
+    @JoinColumn(name = "", referencedColumnName = "codigo")
     var itemList : List<Item> = ArrayList()
 
-    constructor(nome: String, itemList: List<Item>): this(nome){
+    constructor(nome: String, itemList: List<Item>): this(){
         this.nome = nome
         this.itemList = itemList
     }
