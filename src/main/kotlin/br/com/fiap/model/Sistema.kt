@@ -8,17 +8,17 @@ import javax.persistence.*
 class Sistema() {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sistema")
-    var codigo : Int? = null
+    lateinit var codigo : Integer
 
     @Column(name = "NOM_SISTEMA", nullable = false)
-    var nome : String? = null
+    lateinit var nome : String
 
     @OneToMany(mappedBy = "sistema", cascade = [CascadeType.PERSIST, CascadeType.MERGE])
-    var casoList: List<Caso> = ArrayList()
+    lateinit var casoList: List<Caso>
 
-    constructor(nome: String, casoList: List<Caso>) : this(){
+    constructor(nome: String, casoList: List<Caso>?) : this(){
         this.nome = nome
-        this.casoList = casoList
+        this.casoList = casoList ?: ArrayList()
     }
 
     override fun toString(): String {

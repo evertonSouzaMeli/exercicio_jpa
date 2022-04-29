@@ -18,6 +18,7 @@ class Caso(){
     var descricao: String? = null
 
     @ManyToOne
+    @JoinColumn(name = "", referencedColumnName = "codigo")
     var sistema: Sistema? = null
 
     constructor(nome: String, descricao: String, sistema: Sistema): this(){

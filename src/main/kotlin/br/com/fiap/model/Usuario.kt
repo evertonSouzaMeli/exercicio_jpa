@@ -18,9 +18,9 @@ class Usuario() {
     @JoinColumn(name = "", referencedColumnName = "codigo")
     var itemList : List<Item> = ArrayList()
 
-    constructor(nome: String, itemList: List<Item>): this(){
+    constructor(nome: String, itemList: List<Item>?): this(){
         this.nome = nome
-        this.itemList = itemList
+        this.itemList = itemList ?: ArrayList()
     }
 
     override fun toString(): String {

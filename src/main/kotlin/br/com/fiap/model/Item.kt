@@ -19,12 +19,12 @@ class Item() {
 
     @ManyToMany(cascade = [CascadeType.ALL])
     @JoinTable(name = "TAB_ITEM_TESTE_USUARIO")
-    var usuarioList: List<Usuario> = ArrayList()
+    lateinit var usuarioList: List<Usuario>
 
-    constructor(descricao: String, caso: Caso, usuarioList: List<Usuario>) : this() {
+    constructor(descricao: String, caso: Caso, usuarioList: List<Usuario>?) : this() {
         this.descricao = descricao
         this.caso = caso
-        this.usuarioList = usuarioList
+        this.usuarioList = usuarioList ?: ArrayList()
     }
 
     override fun toString(): String {
